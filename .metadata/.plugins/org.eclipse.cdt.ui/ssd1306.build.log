@@ -1,0 +1,61 @@
+11:08:35 **** Incremental Build of configuration Debug for project ssd1306 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'writeEeprom32':
+../Core/Src/main.c:83:9: warning: implicit declaration of function 'memcpy' [-Wimplicit-function-declaration]
+   83 |         memcpy(txBuffer, &data, 4);
+      |         ^~~~~~
+../Core/Src/main.c:28:1: note: include '<string.h>' or provide a declaration of 'memcpy'
+   27 | #include "hangulStringTable.h"
+  +++ |+#include <string.h>
+   28 | /* USER CODE END Includes */
+../Core/Src/main.c:83:9: warning: incompatible implicit declaration of built-in function 'memcpy' [-Wbuiltin-declaration-mismatch]
+   83 |         memcpy(txBuffer, &data, 4);
+      |         ^~~~~~
+../Core/Src/main.c:83:9: note: include '<string.h>' or provide a declaration of 'memcpy'
+../Core/Src/main.c: In function 'readEeprom32':
+../Core/Src/main.c:103:9: warning: incompatible implicit declaration of built-in function 'memcpy' [-Wbuiltin-declaration-mismatch]
+  103 |         memcpy(&result, rxBuffer, 4);
+      |         ^~~~~~
+../Core/Src/main.c:103:9: note: include '<string.h>' or provide a declaration of 'memcpy'
+../Core/Src/main.c: In function 'scanI2C':
+../Core/Src/main.c:108:9: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+  108 |         printf("scan i2c address\n");
+      |         ^~~~~~
+../Core/Src/main.c:28:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+   27 | #include "hangulStringTable.h"
+  +++ |+#include <stdio.h>
+   28 | /* USER CODE END Includes */
+../Core/Src/main.c:108:9: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+  108 |         printf("scan i2c address\n");
+      |         ^~~~~~
+../Core/Src/main.c:108:9: note: include '<stdio.h>' or provide a declaration of 'printf'
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:162:24: warning: passing argument 3 of 'outtextxy_hans' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  162 |   outtextxy_hans(0, 0, hello);
+      |                        ^~~~~
+In file included from ../Core/Src/main.c:26:
+../Core/Inc/hangul.h:22:55: note: expected 'char *' but argument is of type 'const char *'
+   22 | void outtextxy_hans(uint8_t colum, uint8_t row, char *hanbuf);
+      |                                                 ~~~~~~^~~~~~
+../Core/Src/main.c:163:24: warning: passing argument 3 of 'outtextxy_hans' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  163 |   outtextxy_hans(0, 1, string2);
+      |                        ^~~~~~~
+In file included from ../Core/Src/main.c:26:
+../Core/Inc/hangul.h:22:55: note: expected 'char *' but argument is of type 'const char *'
+   22 | void outtextxy_hans(uint8_t colum, uint8_t row, char *hanbuf);
+      |                                                 ~~~~~~^~~~~~
+arm-none-eabi-gcc -o "ssd1306.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\user\STM32CubeIDE\workspace_1.14.0\ssd1306\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ssd1306.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: ssd1306.elf
+ 
+arm-none-eabi-size  ssd1306.elf 
+arm-none-eabi-objdump -h -S ssd1306.elf  > "ssd1306.list"
+   text	   data	    bss	    dec	    hex	filename
+  43056	     28	   3236	  46320	   b4f0	ssd1306.elf
+Finished building: default.size.stdout
+ 
+Finished building: ssd1306.list
+ 
+
+11:08:40 Build Finished. 0 errors, 7 warnings. (took 5s.92ms)
+

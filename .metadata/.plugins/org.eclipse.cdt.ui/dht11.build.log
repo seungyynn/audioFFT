@@ -1,0 +1,32 @@
+13:47:28 **** Incremental Build of configuration Debug for project dht11 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:109:5: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+  109 |     printf("T=%d, H=%d\n", Temperature, Humidity);
+      |     ^~~~~~
+../Core/Src/main.c:26:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+   25 | #include "dht11.h"
+  +++ |+#include <stdio.h>
+   26 | /* USER CODE END Includes */
+../Core/Src/main.c:109:5: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+  109 |     printf("T=%d, H=%d\n", Temperature, Humidity);
+      |     ^~~~~~
+../Core/Src/main.c:109:5: note: include '<stdio.h>' or provide a declaration of 'printf'
+../Core/Src/main.c:107:13: warning: unused variable 'result' [-Wunused-variable]
+  107 |         int result = dht11_read();
+      |             ^~~~~~
+arm-none-eabi-gcc -o "dht11.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\user\STM32CubeIDE\workspace_1.14.0\dht11\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="dht11.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: dht11.elf
+ 
+arm-none-eabi-size  dht11.elf 
+arm-none-eabi-objdump -h -S dht11.elf  > "dht11.list"
+   text	   data	    bss	    dec	    hex	filename
+  17440	    112	   2320	  19872	   4da0	dht11.elf
+Finished building: default.size.stdout
+ 
+Finished building: dht11.list
+ 
+
+13:47:33 Build Finished. 0 errors, 3 warnings. (took 5s.369ms)
+
